@@ -33,7 +33,7 @@ export default function PeminjamanForm({ sumberDaya, onSubmit }: Props) {
     setForm((lama) => ({ ...lama, [field]: nilai }))
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.SubmitEvent) {
     e.preventDefault()
     await onSubmit({
       sumber_daya_id: Number(form.sumberDayaId),

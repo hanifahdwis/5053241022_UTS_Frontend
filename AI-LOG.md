@@ -10,6 +10,11 @@ Log yang jujur tidak mengurangi nilai, sebanyak apa pun AI dipakai. Yang mengura
 - Diubah: ubah status filter sesuai dengan persona
 
 ## (Entri berikutnya)
-- Prompt:
-- Dipakai:
-- Diubah:
+- Prompt: bagaimana agar validasi cek apakah input kosong?
+- Dipakai: SumberDayaForm.tsx bagian nama bersih
+- Diubah: tidak diubah
+
+## (Entri berikutnya)
+- Prompt: formevent tercoret kenapa?
+- Dipakai: SumberDayaForm.tsx bagian handlesubmit
+- Diubah: tidak diubah

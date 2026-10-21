@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { pesanError } from '../api/client'
 import type { SumberDayaInput } from '../types'
 
 type Props = {
@@ -9,17 +10,36 @@ export default function SumberDayaForm({ onSubmit }: Props) {
   const [nama, setNama] = useState('')
   const [jenis, setJenis] = useState('ruang')
   const [stok, setStok] = useState('')
+  const [error, setError] = useState('')
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    await onSubmit({ nama: nama.trim(), jenis, stok: Number(stok) })
+async function handleSubmit(e: React.SubmitEvent) {
+  e.preventDefault()
+  setError('')
+
+  const namaBersih = nama.trim()
+  const angkaStok = Number(stok)
+
+  if (!namaBersih) {
+    setError('Nama sumber daya wajib diisi.')
+    return
+  }
+  
+  try {
+    await onSubmit({
+      nama: namaBersih,
+      jenis,
+      stok: angkaStok,
+    })
     setNama('')
     setJenis('ruang')
     setStok('')
+  } catch (err) {
+    setError(pesanError(err))
   }
-
+}
   return (
     <form onSubmit={handleSubmit}>
+      {error && <div className="error">{error}</div>}
       <div>
         <label htmlFor="sd-nama">Nama sumber daya</label>
         <input id="sd-nama" type="text" value={nama} onChange={(e) => setNama(e.target.value)} />

@@ -30,9 +30,10 @@ alasan memilih memisahkan pemanggilan api agar logika tidak tersebar dan alurnya
 - Penyebab dan solusi: penyebabnya karena sudah masuk di folder server api tapi command nya masih masuk ke server api lagi sehingga double. solusinya hapus bagian server api di command dan jalankan node server.mjs --persona C
 
 ### Bug 2
-- Gejala: 
-- Cara menemukan:
-- Penyebab dan solusi:
+- Gejala: data di form terkirim walau spasi saja
+- Cara menemukan: coba tes dengan isi spasi
+- Penyebab dan solusi: validasi hanya periksa input kosong atau tidak. solusinya pakai trim untuk memeriksa apakah nama sudah diisi
 
 ## 5. Change request
 (Apa yang diminta, bagian kode mana yang kamu ubah, dan satu keputusan desain yang kamu ambil.)
+loh eng

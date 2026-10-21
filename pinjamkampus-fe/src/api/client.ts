@@ -26,7 +26,10 @@ async function kirim(path: string, init?: RequestInit): Promise<Response> {
       const body = (await res.json()) as { error?: unknown }
       if (typeof body.error === 'string') pesan = body.error
     } catch {
-      // body bukan JSON, pakai pesan bawaan
+      throw new ApiError(
+        'Permintaan gagal: server tidak bisa dihubungi (error jaringan). Pastikan server berjalan, lalu coba lagi.',
+        0,
+      )
     }
     throw new ApiError(pesan, res.status)
   }
